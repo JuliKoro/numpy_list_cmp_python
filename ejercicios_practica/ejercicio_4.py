@@ -9,8 +9,6 @@
 
 # Ejercicios con comprensión de listas
 
-#import string
-
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     
