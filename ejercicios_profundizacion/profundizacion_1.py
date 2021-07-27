@@ -29,9 +29,16 @@ que ya dispongamos de Python. El objetivo es:
     b) Si el número es mayor a 21 se debe informar al usuario que perdio
 '''
 
+import numpy as np
+import random
+
 if __name__ == '__main__':
     print('Comenzamos a divertirnos!')
     # A partir de aquí escriba el código que resuelve el enunciado
     # Leer el enunciado con atención y consultar cualquier duda
-
+    lista_random = [random.randrange(1,10) for x in range(3)] # Genero la lista de tres enteros, entre 1 y 10
+    vect_random = np.asanyarray(lista_random) # Convierto la lista a un vector de numpy
+    suma_total = np.sum(vect_random) # Sumo todos los elementos del vector
+    if suma_total <= 21: print(f'Usted sumó {suma_total} de los números aleatorios {lista_random}.')
+    else: print('La suma de sus numeros es mayor a 21. ¡Perdiste!')
     print("terminamos")
