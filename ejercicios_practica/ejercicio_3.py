@@ -9,6 +9,7 @@
 
 # Ejercicios con comprensión de listas
 
+import random
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
@@ -20,6 +21,9 @@ if __name__ == '__main__':
     # números, conteniendo del 0 al 10 inclusive
 
     # lista_0_10 = [......]
+
+    lista_0_10 = [x for x in range(11)]
+    print('Lista del 0 al 10: ', lista_0_10)
 
     # 2)
     # Generar una lista a partir de comprensión de listas,
@@ -34,6 +38,9 @@ if __name__ == '__main__':
 
     # tabla_5 = [......]
 
+    tabla_5 = [5*x for x in range(11)]
+    print('Tabla del 5: ', tabla_5)
+
     # 3)
     # Generar una lista a partir de comprensión de listas,
     # esta lista generada deberá contener 10 números aleatorios,
@@ -44,5 +51,8 @@ if __name__ == '__main__':
     # https://docs.python.org/3/library/random.html
 
     # dias_mes = [.....]
+
+    dia_mes = [random.randrange(1,31) for x in range(11)]
+    print('Posibles días del mes: ', dia_mes)
 
     print("terminamos")

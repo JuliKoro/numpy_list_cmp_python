@@ -9,6 +9,7 @@
 
 # Ejercicios con comprensión de listas
 
+#import string
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
@@ -26,9 +27,16 @@ if __name__ == '__main__':
     # para aplicar en este caso.
     list_numeros_str = ['5', '2', '3', '', '7', 'NaN']
 
+    list_numeros_int = [int(x) if x.isdigit() == True else 0 for x in list_numeros_str]
+    print(f'Lista de numeros enteros a partir de {list_numeros_str}:\n{list_numeros_int}')
 
     # ¿Ya terminaron el ejercicio? ¿Por qué no prueban
     # hacer negativo alguno de los números de la lista?
     # ¿Qué sucede con isdigit? Sorprendente no?
 
+    list_numeros_str2 = ['-5', '2', '-3', '', '7', 'NaN']
+
+    list_numeros_int2 = [int(x) if x.isdigit() == True else 0 for x in list_numeros_str]
+    print(f'Lista 2 de numeros enteros a partir de {list_numeros_str2}:\n{list_numeros_int2}')
+    
     print("terminamos")
