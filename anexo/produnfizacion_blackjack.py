@@ -43,7 +43,7 @@ import numpy as np
 def crear_jugador(cant_jug=1):
     jugador = {
         'id': 1,
-        'nombre': 'Julián',
+        'nombre': 'Nombre',
         'tiros': 0,
         'puntos': 0
     }
@@ -57,7 +57,8 @@ def crear_jugador(cant_jug=1):
 
 
 def blackjak_modulo(jugadores):
-    pass
+    for x in range(len(jugadores)):
+        print(f'Tirada nro. ')
 
 
 if __name__ == '__main__':
