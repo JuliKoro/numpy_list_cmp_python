@@ -36,10 +36,45 @@ dos jugadores y compitan para ver quien sacá la suma de números
 más cercanos a 21 sin pasarse!
 '''
 
+import random
+import numpy as np
+
+
+def crear_jugador(cant_jug=1):
+    jugador = {
+        'id': 1,
+        'nombre': 'Julián',
+        'tiros': 0,
+        'puntos': 0
+    }
+    jugadores = []
+    for x in range(cant_jug):
+        nombre = input(f'Ingrese nombre del jugador nro. {x+1}: ')
+        jugador['id'] = x + 1
+        jugador['nombre'] = nombre
+        jugadores.append(jugador)
+    return jugadores
+
+
+def blackjak_modulo(jugadores):
+    pass
+
+
 if __name__ == '__main__':
     print("Ahora sí! buena suerte :)")
     # A partir de aquí escriba el código que resuelve el enunciado
     # Leer el enunciado con atención y consultar cualquier duda
 
+    print('¡Bienvenidso a Blackjack Python!\nIngrese cantidad de jugadores (Máximo 7):')
+    while True:
+        cant_jug = int(input())
+        if 0 < cant_jug <= 7: break
+        else: print('La cantidad de jugadores debe ser entre 1 y 7.')
+    
+    jugadores = crear_jugador(cant_jug)
+
+    print('¡Que comience el juego!')
+
+    blackjak_modulo(jugadores)
 
     print("terminamos")
