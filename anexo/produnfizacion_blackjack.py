@@ -40,6 +40,10 @@ import random
 import numpy as np
 
 
+si = ['1', 'Si', 'si', 'S', 's', 'SI', 'sI']
+no = ['2', 'No', 'no', 'N', 'n', 'NO', 'nO']
+
+
 def crear_jugador(cant_jug=1):
     jugador = {
         'id': 1,
@@ -58,8 +62,7 @@ def crear_jugador(cant_jug=1):
 
 
 def blackjak_modulo(jugadores):
-    si = ['1', 'Si', 'si', 'S', 's', 'SI', 'sI']
-    no = ['2', 'No', 'no', 'N', 'n', 'NO', 'nO']
+    salida = 0
     while True:
         for x in range(len(jugadores)):
             if jugadores[x]['turno'] == True:
@@ -67,17 +70,30 @@ def blackjak_modulo(jugadores):
                 tirada_vec = np.asanyarray(tirada)
                 jugadores[x]['puntos'] += np.sum(tirada_vec)
                 jugadores[x]['tiros'] += 1
+                if jugadores[x]['puntos'] > 21: 
+                    jugadores[x]['puntos'] -= np.sum(tirada_vec)
+                    jugadores[x]['tiros'] -= 1
+                    salida += 1
+                elif jugadores[x]['puntos'] == 21: break
                 print(f"Tirada nro. {jugadores[x]['tiros']} de {jugadores[x]['nombre']}: {tirada}",
                     f"Puntos: {jugadores[x]['puntos']}\n")
-                if jugadores[x]['puntos'] > 21: jugadores[x]['puntos'] -= np.sum(tirada_vec)
                 jugadores[x]['turno'] = False
             else:
                 proximo = input('¿Quiere volver a tirar?\n1. Si\n2. No\n')
                 if proximo in si: jugadores[x]['turno'] = True
-                elif proximo in no: break
+                elif proximo in no: 
+                    salida += 1
+                    break
                 else: print('Por favor ingrese correctamente una de las opciones.')
+        if salida == len(jugadores): break
             
-        
+
+def tabla_de_puntos(jugadores):
+    tabla = sorted(jugadores, key=lambda i: i['puntos'], reverse=True)
+    print("Tabla de puntos:\n", tabla)
+    print(f"¡El ganador es {tabla[0]['nombre']} con {tabla[0]['puntos']} puntos en {tabla[0]['tiros']} tiradas!")
+
+
 if __name__ == '__main__':
     print("Ahora sí! buena suerte :)")
     # A partir de aquí escriba el código que resuelve el enunciado
@@ -89,7 +105,14 @@ if __name__ == '__main__':
         if 0 < cant_jug <= 7: break
         else: print('La cantidad de jugadores debe ser entre 1 y 7.')
     jugadores = crear_jugador(cant_jug)
-    print('¡Que comience el juego!')
-    blackjak_modulo(jugadores)
-    
+    ronda = 'si'
+    while ronda in si:
+        print('¡Que comience el juego!')
+        blackjak_modulo(jugadores)
+        print('\n¡Fin de la partida!')
+        tabla_de_puntos(jugadores)
+        while True:
+            ronda = input('¿Quiere/n volver a jugar?\n1. Si\n2. No\n')
+            if ronda in si or ronda in no: break
+            else: print('Por favor ingrese correctamente una de las opciones.')
     print("terminamos")
