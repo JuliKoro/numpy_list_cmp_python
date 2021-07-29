@@ -87,10 +87,14 @@ def blackjak_modulo(jugadores):
                 else: print('Por favor ingrese correctamente una de las opciones.')
         if salida == len(jugadores): break
             
-
+# Terminar tabla de puntos
 def tabla_de_puntos(jugadores):
     tabla = sorted(jugadores, key=lambda i: i['puntos'], reverse=True)
-    print("Tabla de puntos:\n", tabla)
+    cabeza = [x.upper() for x in list(tabla[0].keys())]
+    print("Tabla de puntos:\n", 'POS. ', cabeza[1], ' ', cabeza[2], ' ', cabeza[3], '\n')
+    for i in range(len(jugadores)):
+        contenido = list(tabla[i].values())
+        print(f"  {i+1}\t{contenido[1]}\t{contenido[2]}\t{contenido[3]}\n")
     print(f"¡El ganador es {tabla[0]['nombre']} con {tabla[0]['puntos']} puntos en {tabla[0]['tiros']} tiradas!")
 
 
